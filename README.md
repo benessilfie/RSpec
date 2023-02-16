@@ -10,8 +10,8 @@ This respository contains my notes, examples, and exercises from the book [Effec
 
 ## Notes
 
-- Notes on Groups, Examples, and Expectations [here]("./sandwich/README.md")
-- Notes on Customizing Spec Output [here]("./coffee/README.md")
+- Notes on Groups, Examples, and Expectations [here]("/sandwich/README.md")
+- Notes on Customizing Spec Output [here]("/coffee/README.md")
 
 ## Exercises
 
