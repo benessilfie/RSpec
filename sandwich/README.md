@@ -1,4 +1,4 @@
-# First Spec
+# Getting Started with RSpec
 
 RSpec uses the words `describe` and `it` to define a spec. The `describe` method takes a string and a block. The string is the name of the thing you are describing, and the block contains the spec or test cases. The `it` method takes a string and a block. The string is the name of the exact case or spec, and the block contains the code that tests that spec.
 
@@ -151,7 +151,7 @@ Hooks are great for running set up and clean up code. They are also great for sh
 
 RSpec does a lot for us, but under the hood it is just Ruby. We can use Ruby to create helper methods to share code across examples. Each example group is a Ruby class, which means we can define methods on it.
 
-In our toppings example we call sandwich twice. Each call creates a new instance of `Sandwich`. So, the sandwich we added toppings to is a different one than the sandwich we are checking
+In our toppings example we call sandwich twice. Each call creates a new instance of `Sandwich`. So, the sandwich we added toppings to is a different one than the sandwich we are checking for toppings. The traditional ruby solution is a technique called `memoization`, where we store the results of and operation which in our case is creating a sandwich and refer to the stored copy from then on.
 
 Example 6:
 
@@ -176,10 +176,12 @@ RSpec.describe 'An ideal sandwich' do
 end
 ```
 
+This technique works but it is not without its problems. The `||=` operator works by checking if `@sandwich` is `falsey`, that is `nil` or `false` before creating a new sandwich. That means it wont work if we were actually trying to store something falsey. This example works fine but in another example this could be a problem. Thankfully RSpec gives us another way of doing this with `let`.
+
 
 ### Let
 
-The `let` method is used to define a helper method. The method is only run when it is called. The value is cached between multiple calls in the same example but not across examples. It is used to set up the environment for your tests. You can use it to create a common object for your tests.
+The `let` method is used to define a helper method that caches its value between multiple calls in the same example but not across examples. It is used to set up the environment for your tests. In our example below we are using `let` the name `sandwich` to the result of a computation `the block` and just as with the memoized helper method, RSpec will run the block the first time any example calls `sandwich`
 
 Example 7:
 
