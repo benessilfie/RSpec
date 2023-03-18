@@ -1,4 +1,5 @@
-require 'sinatra/base'
+require 'sinatra'
+# require 'sinatra/base'
 require 'json'
 
 module ExpenseTracker
