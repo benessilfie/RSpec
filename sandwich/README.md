@@ -6,7 +6,7 @@ Example:
 
 ```ruby
 RSpec.describe 'An ideal sandwich' do
-  it 'is delicious' do 
+  it 'is delicious' do
     sandwich = Sandwich.new('delicious', [])
     taste = sandwich.taste
 
@@ -36,7 +36,7 @@ Example 2:
 
 ```ruby
 RSpec.describe 'An ideal sandwich' do
-  it 'is delicious' do 
+  it 'is delicious' do
     sandwich = Sandwich.new('delicious', [])
     taste = sandwich.taste
 
@@ -53,7 +53,7 @@ RSpec.describe 'An ideal sandwich' do
 end
 ```
 
-The expectation for the second example is `expect(toppings).not_to be_empty`. The matcher `be_empty` returns true if the value is empty. In this case, the value is an array of toppings. If the array is empty, the matcher returns false and the test fails. If the array is not empty, the matcher returns true and the test passes. 
+The expectation for the second example is `expect(toppings).not_to be_empty`. The matcher `be_empty` returns true if the value is empty. In this case, the value is an array of toppings. If the array is empty, the matcher returns false and the test fails. If the array is not empty, the matcher returns true and the test passes.
 
 This specs runs fine but its a little repetitive. We are creating a sandwich in both tests. We can make a common sandwich for both tests in multiple ways in RSpec.
 
@@ -63,7 +63,7 @@ This specs runs fine but its a little repetitive. We are creating a sandwich in 
 
 ## Hooks
 
-Hooks are blocks of code that run before or after each example or group of examples. They are used to set up or clean up the environment for your tests. There are four types of hooks: `before`, `after`, `around`, and `let`. 
+Hooks are blocks of code that run before or after each example or group of examples. They are used to set up or clean up the environment for your tests. There are four types of hooks: `before`, `after`, `around`, and `let`.
 
 ### Before
 
@@ -75,7 +75,7 @@ Example 3:
 RSpec.describe 'An ideal sandwich' do
   before { @sandwich = Sandwich.new('delicious', []) }
 
-  it 'is delicious' do 
+  it 'is delicious' do
     taste = @sandwich.taste
 
     expect(taste).to eq('delicious')
@@ -101,7 +101,7 @@ RSpec.describe 'An ideal sandwich' do
   before { @sandwich = Sandwich.new('delicious', []) }
   after { @sandwich = nil }
 
-  it 'is delicious' do 
+  it 'is delicious' do
     taste = @sandwich.taste
 
     expect(taste).to eq('delicious')
@@ -130,7 +130,7 @@ RSpec.describe 'An ideal sandwich' do
     @sandwich = nil
   end
 
-  it 'is delicious' do 
+  it 'is delicious' do
     taste = @sandwich.taste
 
     expect(taste).to eq('delicious')
@@ -161,7 +161,7 @@ RSpec.describe 'An ideal sandwich' do
     @sandwich ||= Sandwich.new('delicious', [])
   end
 
-  it 'is delicious' do 
+  it 'is delicious' do
     taste = sandwich.taste
 
     expect(taste).to eq('delicious')
@@ -178,7 +178,6 @@ end
 
 This technique works but it is not without its problems. The `||=` operator works by checking if `@sandwich` is `falsey`, that is `nil` or `false` before creating a new sandwich. That means it wont work if we were actually trying to store something falsey. This example works fine but in another example this could be a problem. Thankfully RSpec gives us another way of doing this with `let`.
 
-
 ### Let
 
 The `let` method is used to define a helper method that caches its value between multiple calls in the same example but not across examples. It is used to set up the environment for your tests. In our example below we are using `let` the name `sandwich` to the result of a computation `the block` and just as with the memoized helper method, RSpec will run the block the first time any example calls `sandwich`
@@ -189,7 +188,7 @@ Example 7:
 RSpec.describe 'An ideal sandwich' do
   let (:sandwich) { Sandwich.new('delicious', []) }
 
-  it 'is delicious' do 
+  it 'is delicious' do
     taste = sandwich.taste
 
     expect(taste).to eq('delicious')
@@ -203,6 +202,3 @@ RSpec.describe 'An ideal sandwich' do
   end
 end
 ```
-
-
-

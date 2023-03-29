@@ -20,4 +20,4 @@ This respository contains my notes, examples, and exercises from the book [Effec
 
 ## Author
 
-- [**Benjamin Essilfie Quansah**]( https://github.com/benessilfie)
+- [**Benjamin Essilfie Quansah**](https://github.com/benessilfie)
